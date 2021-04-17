@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="jquery.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  
+<script>
+  function checkPhone(){
+    var phone = document.getElementById("txt_phone").value;
+     var check_error_phone = document.getElementById("error_phone");
+     var regexPhone = /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
+     if(phone == ""){
+        check_error_phone.innerHTML= "Please fill out this field.";
+      }
+      else if(!regexPhone.test(phone)){
+        check_error_phone.innerHTML= " SĐT Không đúng định dạng  ";
+         alert ("Có thông báo nhập lại Phone");
+      }
+      else{
+        check_error_phone.innerHTML=""
+        return phone;
+      }
+
+  }
+  function checkEmail(){
+    var phone = document.getElementById("txt_email").value;
+     var check_error_phone = document.getElementById("error_email");
+     if(phone == ""){
+        check_error_phone.innerHTML= "Please fill out this field.";
+      }
+      else{
+        check_error_phone.innerHTML=""
+        return phone;
+  }}
+   function send(){
+  
+    var arr = document.getElementsByTagName('input');
+     var txt_name = arr[0].value;
+     var txt_phone = arr[1].value;
+     var img = arr[2].value;
+     var txt_email = arr[3].value;
+   
+   if(txt_name == "" || txt_phone == "" ||img == "" ||txt_email == "" ){
+          alert("Please fill out this field ");
+     } 
+     confirm('body\n'+txt_name+"\n"+txt_phone+"\n"+img+"\n"+txt_email+"\n")
+    
+    }
+</script>
+  <body>
+      <form action="" method="POST" class="was-validated">
+             <h1 style="text-align: center;"> INFORMATION</h1>
+           <div class="form-group">
+            <label for="">Username:</label>
+            <input type="text" class="form-control" id="txt_name" placeholder="Enter username" required>
+            <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback" id="error_name">Please fill out this field.</div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="txt" class="form-control" id="txt_phone" placeholder="Enter phone" required onblur="checkPhone();">
+            <div class="valid-feedback" id="error_phone" >Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <div class="form-group">
+            <label for="img">Image:</label>
+            <input type="file" class="form-control" id="img" placeholder="Enter password" name="img" required>
+            <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="txt_email" placeholder="Enter password" required onblur="checkEmail();">
+            <div class="valid-feedback"  id="error_email">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+          <td>
+            <input onclick="send()" type="button" value="Submit">
+          </td>
+           
+         
+      </form>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <scrip src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></scrip>
+    <scrip src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></scrip>
+    <scrip src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></scrip>
+  </body>
+</html>

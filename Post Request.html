@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form id="form" method="post">
+    <input type="text" id="name" placeholder="name"/>
+    <input type="txt"  id="phone" placeholder="Phone"/>
+    <input type="text"  id="position" placeholder="position"/>
+    <input type="text"  id="exp" placeholder="exp"/>
+    <input type="file" id="picture" placeholder="picture"/>
+    <input type="email"  id="email" placeholder="email"/><br>
+    <input type="submit" value="Add Todo"/>
+  </form>
+</body>
+ <script>
+   var form = document.getElementById('form')
+   form.addEventListener('submit',function(e){
+       e.preventDefault()
+
+        var Name = document.getElementById("name").value
+        var Phone = document.getElementById("phone").value
+        var Position = document.getElementById("position").value
+        var Exp = document.getElementById("exp").value
+        var Picture = document.getElementById("picture").value
+        var Email = document.getElementById("email").value
+
+        fetch(" https://freemind-test.netlify.app/.netlify/functions/test" , {
+       method:'POST' ,
+       body: JSON.stringify({
+           Name:Name,
+           Phone:Phone,
+           Position:Position,
+           Exp: Exp,
+           Picture:Picture,
+           Email:Email
+
+       }),
+       headers:{
+         "Content-Type": "application/json; charset=UTF-8"
+       }
+        })
+.then(function(response){
+  return response.json()
+})
+       .then(function(data){
+         console.log(data)
+       })
+   })
+ </script>
+</html>
